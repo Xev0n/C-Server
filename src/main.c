@@ -58,6 +58,7 @@ int create_socket(const char *filename) {
     strncpy(name.sun_path, filename, sizeof(name.sun_path));
     size = SUN_LEN(&name);
 
+    //TODO: understand and explain what the "bind" function does.
     if (bind(sock, (struct sockaddr *) &name, size) < 0) {
         perror("Could not bind socket");
         exit(EXIT_FAILURE);
@@ -70,8 +71,10 @@ int main(int argc, char *argv[]) {
     printf("Creating socket listening on %s:%d\n", HOST, PORT);
     int sock = create_socket(SOCKET_NAME);
     
-    // do cool stuff here
-    
+    //TODO: add a loop to prevent the program from closing
+    //TODO: use the socket to decode the HTTP requests and do cool stuff
+    //TODO: close the socket when the program is beein terminated/closed
+
     //close(sock);
     return 0;
 }
